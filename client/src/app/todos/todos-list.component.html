@@ -1,0 +1,9 @@
+<ul class="list-group">
+    <li class="list-group-item list-group-item-info">
+        <input #input type="text" placeholder="Filter" [(ngModel)]="search">
+    </li>
+    <li class="list-group-item list-group-item-info">To-dos Owner</li>
+    <li *ngFor="let to-do of to-dos | async | filterBy: {owner: search}" class="list-group-item">
+        {{ todos.owner }}
+    </li>
+</ul>
