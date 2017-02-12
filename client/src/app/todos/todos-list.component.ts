@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import { UserListService } from "./user-list.service";
+import { TodosListService } from "./todos-list.service";
 import { FormsModule } from '@angular/forms';
 import { FilterBy } from "./filter.pipe";
 
 @Component({
-    selector: 'user-list-component',
-    providers: [UserListService],
-    templateUrl: 'user-list.component.html',
+    selector: 'todos-list-component',
+    providers: [TodosListService],
+    templateUrl: 'todos-list.component.html',
 })
 
-export class UserListComponent {
-    private users: any;
+export class TodosListComponent {
+    private todos: any;
 
-    constructor(private _userListService: UserListService) {
-        this.users = _userListService.getUsers();
+    constructor(private _todosListService: TodosListService) {
+        this.todos = _todosListService.getTodos();
     }
 }
