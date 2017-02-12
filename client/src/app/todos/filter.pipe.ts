@@ -1,9 +1,9 @@
 import {Pipe, PipeTransform} from "@angular/core";
 
 @Pipe({
-    name: 'filterBy'
+    name: 'filterBy2'
 })
-export class FilterBy implements PipeTransform {
+export class FilterBy2 implements PipeTransform {
     private filterByString(filter){
         filter = filter.toLowerCase();
         return value => {
