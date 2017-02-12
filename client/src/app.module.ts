@@ -7,6 +7,7 @@ import { NavbarComponent } from './app/navbar/navbar.component';
 import { HomeComponent} from './app/home/home.component';
 import { KittensComponent }   from './app/kittens/kittens.component';
 import { UserListComponent } from './app/users/user-list.component';
+import { TodosListComponent } from './app/todos/todos-list.component';
 import { routing } from './app/app.routes';
 import {FormsModule} from '@angular/forms';
 import {FilterBy} from './app/users/filter.pipe';
@@ -25,6 +26,7 @@ import {FilterBy} from './app/users/filter.pipe';
         HomeComponent,
         NavbarComponent,
         UserListComponent,
+        TodosListComponent,
         FilterBy
     ],
     bootstrap: [ AppComponent ]
