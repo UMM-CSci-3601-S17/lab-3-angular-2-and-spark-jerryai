@@ -5,6 +5,7 @@ import { FilterBy } from "./filter.pipe";
 
 @Component({
     selector: 'user-list-component',
+    providers: [UserListService],
     templateUrl: 'user-list.component.html',
 })
 

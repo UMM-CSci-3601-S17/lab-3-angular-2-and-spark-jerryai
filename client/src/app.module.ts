@@ -11,7 +11,6 @@ import { TodosListComponent } from './app/todos/todos-list.component';
 import { routing } from './app/app.routes';
 import {FormsModule} from '@angular/forms';
 import {FilterBy} from './app/users/filter.pipe';
-import {FilterBy2} from './app/todos/filter.pipe';
 
 @NgModule({
     imports: [
@@ -28,8 +27,7 @@ import {FilterBy2} from './app/todos/filter.pipe';
         NavbarComponent,
         UserListComponent,
         TodosListComponent,
-        FilterBy,
-        FilterBy2
+        FilterBy
     ],
     bootstrap: [ AppComponent ]
 })
