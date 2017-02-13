@@ -10,11 +10,9 @@ import { FilterBy } from "./filter.pipe";
 })
 
 export class UserListComponent {
-    private users: any;
+    public users: any;
 
-    constructor(private _userListService: UserListService) {
-        this.users = _userListService.getUsers();
+    constructor(private userListService: UserListService) {
+        this.users = this.userListService.getUsers();
     }
 }
-
-

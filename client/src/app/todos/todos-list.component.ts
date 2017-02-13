@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TodosListService } from "./todos-list.service";
 import { FormsModule } from '@angular/forms';
-import { FilterBy2 } from "./filter.pipe";
+import { FilterBy } from "./filter.pipe";
 
 @Component({
     selector: 'todos-list-component',
@@ -12,7 +12,7 @@ import { FilterBy2 } from "./filter.pipe";
 export class TodosListComponent {
     private todos: any;
 
-    constructor(private _todosListService: TodosListService) {
-        this.todos = _todosListService.getTodos();
+    constructor(private todosListService: TodosListService) {
+        this.todos = this.todosListService.getTodos();
     }
 }
