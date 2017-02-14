@@ -12,22 +12,8 @@
 
     <li class="list-group-item list-group-item-info">Todos List</li>
 
-    <!--
-    <li *ngFor="let todo of todos | async | filterBy: {owner: searchByOwner}" class="list-group-item">
-        {{ todo.owner }}
-    </li>
-
-    <li *ngFor="let todo of todos | async | filterBy: {category: searchByCategory}" class="list-group-item2">
-        {{ todo.category }}
-    </li>
-
-    <li *ngFor="let todo of todos | async | filterBy: {body: searchByBody}" class="list-group-item2">
+    <li *ngFor="let todo of todos | async | filterBy: {_id: searchByID} | filterBy: {owner: searchByOwner} | filterBy: {body: searchByBody} | filterBy: {category: searchByCategory} | filterBy: {status: searchByStatus}" class="list-group-item-owner">
         {{ todo.body }}
-    </li>
-    !-->
-
-    <li *ngFor="let todo of todos | async | filterBy: {status: searchByStatus}" class="list-group-item2">
-        {{ todo.status }}
     </li>
 
 </ul>
