@@ -5,15 +5,68 @@
         <input #input type="text" placeholder="Body" [(ngModel)]="searchByBody">
         <input #input type="text" placeholder="Category" [(ngModel)]="searchByCategory">
         <select #input [(ngModel)]="searchByStatus">
+            <option value=""> </option>
             <option value=1>True</option>
             <option value=0>False</option>
         </select>
     </li>
 
     <li class="list-group-item list-group-item-info">Todos List</li>
+    <li class="info-title">
 
-    <li *ngFor="let todo of todos | async | filterBy: {_id: searchByID} | filterBy: {owner: searchByOwner} | filterBy: {body: searchByBody} | filterBy: {category: searchByCategory} | filterBy: {status: searchByStatus}" class="list-group-item-owner">
-        {{ todo.body }}
     </li>
-
 </ul>
+
+    <table *ngFor="let todo of todos | async | filterBy: {_id: searchByID} | filterBy: {owner: searchByOwner} | filterBy: {body: searchByBody} | filterBy: {category: searchByCategory} | filterBy: {status: searchByStatus}" class="list-group-item-owner">
+
+            <tr>
+                <td id="id-column"> {{ todo._id }} </td>
+                <td id="owner-column"> {{ todo.owner }} </td>
+                <td id="body-column"> {{ todo.body }} </td>
+                <td id="category-column"> {{ todo.category }} </td>
+                <td id="status-column"> {{ todo.status }} </td>
+            </tr>
+
+
+    </table>
+
+<style>
+
+    table, td {
+        border: 1px solid black;
+    }
+
+    #id-column {
+        width: 20%;
+        text-align: center;
+        margin: 5px;
+    }
+
+    #owner-column {
+        width: 10%;
+        text-align: center;
+        margin: 5px;
+    }
+
+    #body-column {
+        width: 35%;
+        text-align: left;
+        margin: 5px;
+        padding: 5px;
+
+    }
+
+    #category-column {
+        width: 15%;
+        text-align: center;
+        margin: 5px;
+    }
+
+    #status-column {
+        width: 10%;
+        text-align: center;
+        margin: 5px;
+    }
+
+</style>
+

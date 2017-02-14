@@ -5,9 +5,11 @@ import { FilterBy } from "./filter.pipe";
 
 @Component({
     selector: 'user-list-component',
-    providers: [UserListService],
+    providers: [
+        UserListService,
+        FilterBy
+    ],
     templateUrl: 'user-list.component.html',
-    providers: [ FilterBy ]
 })
 
 export class UserListComponent implements OnInit {
