@@ -12,60 +12,64 @@
     </li>
 
     <li class="list-group-item list-group-item-info">Todos List</li>
-    <li class="info-title">
 
-    </li>
 </ul>
 
-    <table *ngFor="let todo of todos | async | filterBy: {_id: searchByID} | filterBy: {owner: searchByOwner} | filterBy: {body: searchByBody} | filterBy: {category: searchByCategory} | filterBy: {status: searchByStatus}" class="list-group-item-owner">
+    <table class="list-group-item">
+        <tr>
+            <th class="id-column">ID</th>
+            <th class="owner-column">Owner</th>
+            <th class="body-column">Body</th>
+            <th class="category-column">Category</th>
+            <th class="status-column">Status</th>
+        </tr>
+    </table>
 
+    <table *ngFor="let todo of todos | async | filterBy: {_id: searchByID} | filterBy: {owner: searchByOwner} | filterBy: {body: searchByBody} | filterBy: {category: searchByCategory} | filterBy: {status: searchByStatus}" class="list-group-item">
             <tr>
-                <td id="id-column"> {{ todo._id }} </td>
-                <td id="owner-column"> {{ todo.owner }} </td>
-                <td id="body-column"> {{ todo.body }} </td>
-                <td id="category-column"> {{ todo.category }} </td>
-                <td id="status-column"> {{ todo.status }} </td>
+                <td class="id-column border"> {{ todo._id }} </td>
+                <td class="owner-column border"> {{ todo.owner }} </td>
+                <td class="body-column border"> {{ todo.body }} </td>
+                <td class="category-column border"> {{ todo.category }} </td>
+                <td class="status-column border"> {{ todo.status }} </td>
             </tr>
-
-
     </table>
 
 <style>
 
-    table, td {
+    table td th{
         border: 1px solid black;
     }
 
-    #id-column {
+
+    .border {
+        border-collapse: separate;
+    }
+
+    .id-column {
         width: 20%;
         text-align: center;
-        margin: 5px;
     }
 
-    #owner-column {
+    .owner-column {
         width: 10%;
         text-align: center;
-        margin: 5px;
     }
 
-    #body-column {
+    .body-column {
         width: 35%;
         text-align: left;
-        margin: 5px;
         padding: 5px;
-
     }
 
-    #category-column {
+    .category-column {
         width: 15%;
         text-align: center;
-        margin: 5px;
     }
 
-    #status-column {
+    .status-column {
         width: 10%;
         text-align: center;
-        margin: 5px;
     }
 
 </style>
