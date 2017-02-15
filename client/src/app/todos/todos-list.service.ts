@@ -5,11 +5,14 @@ import {Observable} from "rxjs";
 
 @Injectable()
 export class TodosListService {
-    private baseUrl: string = API_URL;
+    private baseUrl: string = API_URL + "todos";
     constructor(private http:Http) { }
 
     getTodos(): Observable<Todos[]> {
-        let body = this.http.request(this.baseUrl + 'todos').map(res => res.json());
-        return body;
+        return this.http.request(this.baseUrl).map(res => res.json());
+    }
+
+    getTodoById(id: string): Observable<Todos> {
+        return this.http.request(this.baseUrl + "/" + id).map(res => res.json());
     }
 }
