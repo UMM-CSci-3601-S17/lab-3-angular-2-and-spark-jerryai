@@ -1,10 +1,10 @@
 <ul class="list-group">
     <li class="list-group-item list-group-item-info">
-        <input #input type="text" placeholder="ID" (input)="searchByID">
-        <input #input type="text" placeholder="Owner" (input)="searchByOwner">
-        <input #input type="text" placeholder="Body" (input)="searchByBody">
-        <input #input type="text" placeholder="Category" (input)="searchByCategory">
-        <select #input (input)="searchByStatus">
+        <input #input type="text" placeholder="ID" (input)="searchByID = $event.target.value">
+        <input #input type="text" placeholder="Owner" (input)="searchByOwner = $event.target.value">
+        <input #input type="text" placeholder="Body" (input)="searchByBody = $event.target.value">
+        <input #input type="text" placeholder="Category" (input)="searchByCategory = $event.target.value">
+        <select #input (input)="searchByStatus = $event.target.value">
             <option value=""> </option>
             <option value=1>True</option>
             <option value=0>False</option>
