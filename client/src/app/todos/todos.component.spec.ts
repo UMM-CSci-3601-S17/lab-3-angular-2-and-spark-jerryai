@@ -1,82 +1,71 @@
 import { ComponentFixture, TestBed, async } from "@angular/core/testing";
 import { Todos } from "./todos";
-import { TodosListComponent } from "./todos-list.component";
+import { TodosComponent } from "./todos.component";
 import { TodosListService } from "./todos-list.service";
 import { Observable } from "rxjs";
 import { PipeModule } from "../../pipe.module";
 
-describe("Todos list", () => {
+describe("Todo component", () => {
 
-    let todosList: TodosListComponent;
-    let fixture: ComponentFixture<TodosListComponent>;
+    let todosComponent: TodosComponent;
+    let fixture: ComponentFixture<TodosComponent>;
 
     let todosListServiceStub: {
-        getTodos: () => Observable<Todos[]>
+        getTodoById: (todoId: string) => Observable<Todos>
     };
 
     beforeEach(() => {
-        // stub TodosService for test purposes
+        // stub UserService for test purposes
         todosListServiceStub = {
-            getTodos: () => Observable.of([
+            getTodoById: (todoId: string) => Observable.of([
                 {
-                    _id: "id_1",
+                    _id: "chris_id",
                     owner: "Chris",
                     status: true,
-                    body: "In sunt ex non tempor cillum",
-                    category: "software design"
-                },
-                {
-                    _id: "id_2",
-                    owner: "Pat",
-                    status: false,
-                    body: "Ipsum esse est ullamco magna",
+                    body: "this is Chris",
                     category: "homework"
                 },
                 {
-                    _id: "id_3",
-                    owner: "Jamie",
+                    _id: "pat_id",
+                    owner: "Pat",
                     status: true,
-                    body: "Aliqua esse aliqua veniam id",
+                    body: "this is Pat",
+                    category: "homework"
+                },
+                {
+                    _id: "sam_id",
+                    owner: "Sam",
+                    status: false,
+                    body: "this is Sam",
                     category: "groceries"
                 }
-            ])
+            ].find(todo => todo._id === todoId))
         };
 
         TestBed.configureTestingModule({
             imports: [PipeModule],
-            declarations: [ TodosListComponent ],
-            // providers:    [ UserListService ]  // NO! Don't provide the real service!
-            // Provide a test-double instead
+            declarations: [ TodosComponent ],
             providers:    [ { provide: TodosListService, useValue: todosListServiceStub } ]
         })
     });
 
     beforeEach(async(() => {
         TestBed.compileComponents().then(() => {
-            fixture = TestBed.createComponent(TodosListComponent);
-            todosList = fixture.componentInstance;
-            fixture.detectChanges();
+            fixture = TestBed.createComponent(TodosComponent);
+            todosComponent = fixture.componentInstance;
         });
     }));
 
-    it("contains all the todos", () => {
-        expect(todosList.todos.length).toBe(3);
+    it("can retrieve Pat by ID", () => {
+        todosComponent.setId("pat_id");
+        expect(todosComponent.todo).toBeDefined();
+        expect(todosComponent.todo.owner).toBe("Pat");
+        expect(todosComponent.todo.category).toBe("homework");
     });
 
-    it("contains an owner named 'Chris'", () => {
-        expect(todosList.todos.some((todo: Todos) => todo.owner === "Chris" )).toBe(true);
-    });
-
-    it("contain an owner named 'Jamie'", () => {
-        expect(todosList.todos.some((todo: Todos) => todo.owner === "Jamie" )).toBe(true);
-    });
-
-    it("doesn't contain an owner named 'Santa'", () => {
-        expect(todosList.todos.some((todo: Todos) => todo.owner === "Santa" )).toBe(false);
-    });
-
-    it("has two owners whose status is true", () => {
-        expect(todosList.todos.filter((todo: Todos) => todo.status === true).length).toBe(2);
+    it("returns undefined for Santa", () => {
+        todosComponent.setId("Santa");
+        expect(todosComponent.todo).not.toBeDefined();
     });
 
 });
