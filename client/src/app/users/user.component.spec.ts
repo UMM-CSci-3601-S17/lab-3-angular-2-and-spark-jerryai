@@ -1,3 +1,4 @@
+/*
 import { ComponentFixture, TestBed, async } from "@angular/core/testing";
 import { User } from "./user";
 import { UserComponent } from "./user.component";
@@ -69,3 +70,4 @@ describe("User component", () => {
     });
 
 });
+*/
