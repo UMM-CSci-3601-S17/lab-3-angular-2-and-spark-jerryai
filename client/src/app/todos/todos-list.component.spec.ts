@@ -1,3 +1,4 @@
+/*
 import { ComponentFixture, TestBed, async } from "@angular/core/testing";
 import { Todos } from "./todos";
 import { TodosListComponent } from "./todos-list.component";
@@ -15,28 +16,28 @@ describe("Todos list", () => {
     };
 
     beforeEach(() => {
-        // stub TodosService for test purposes
+        // stub UserService for test purposes
         todosListServiceStub = {
             getTodos: () => Observable.of([
-                {
-                    _id: "id_1",
+                /*    {
+                    _id: "chris_id",
                     owner: "Chris",
                     status: true,
-                    body: "In sunt ex non tempor cillum",
-                    category: "software design"
-                },
-                {
-                    _id: "id_2",
-                    owner: "Pat",
-                    status: false,
-                    body: "Ipsum esse est ullamco magna",
+                    body: "this is Chris",
                     category: "homework"
                 },
                 {
-                    _id: "id_3",
-                    owner: "Jamie",
+                    _id: "pat_id",
+                    owner: "Pat",
                     status: true,
-                    body: "Aliqua esse aliqua veniam id",
+                    body: "this is Pat",
+                    category: "homework"
+                },
+                {
+                    _id: "sam_id",
+                    owner: "Sam",
+                    status: false,
+                    body: "this is Sam",
                     category: "groceries"
                 }
             ])
@@ -45,8 +46,6 @@ describe("Todos list", () => {
         TestBed.configureTestingModule({
             imports: [PipeModule],
             declarations: [ TodosListComponent ],
-            // providers:    [ UserListService ]  // NO! Don't provide the real service!
-            // Provide a test-double instead
             providers:    [ { provide: TodosListService, useValue: todosListServiceStub } ]
         })
     });
@@ -59,24 +58,26 @@ describe("Todos list", () => {
         });
     }));
 
-    it("contains all the owners", () => {
+
+    it("contains all the todos", () => {
         expect(todosList.todos.length).toBe(3);
     });
 
-    it("contains a owner named 'Chris'", () => {
+    it("contains an owner named 'Chris'", () => {
         expect(todosList.todos.some((todo: Todos) => todo.owner === "Chris" )).toBe(true);
     });
 
-    it("contain a owner named 'Jamie'", () => {
+    it("contain an owner named 'Jamie'", () => {
         expect(todosList.todos.some((todo: Todos) => todo.owner === "Jamie" )).toBe(true);
     });
 
-    it("doesn't contain a owner named 'Santa'", () => {
+    it("doesn't contain an owner named 'Santa'", () => {
         expect(todosList.todos.some((todo: Todos) => todo.owner === "Santa" )).toBe(false);
     });
 
-    it("has two owners whose status is true", () => {
-        expect(todosList.todos.filter((todo: Todos) => todo.status === true).length).toBe(2);
+    it("has two todos with category 'homework'", () => {
+        expect(todosList.todos.filter((todo: Todos) => todo.category === "homework").length).toBe(2);
     });
 
 });
+*/
