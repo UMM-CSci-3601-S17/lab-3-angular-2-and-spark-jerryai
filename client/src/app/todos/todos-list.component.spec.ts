@@ -1,4 +1,3 @@
-/*
 import { ComponentFixture, TestBed, async } from "@angular/core/testing";
 import { Todos } from "./todos";
 import { TodosListComponent } from "./todos-list.component";
@@ -19,7 +18,7 @@ describe("Todos list", () => {
         // stub UserService for test purposes
         todosListServiceStub = {
             getTodos: () => Observable.of([
-                /*    {
+                    {
                     _id: "chris_id",
                     owner: "Chris",
                     status: true,
@@ -80,4 +79,3 @@ describe("Todos list", () => {
     });
 
 });
-*/
